@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encuesta de Confianza Institucional</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+    h1, p, label {
+      text-align: left;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="submit"],
+    select {
+      width: 100%;
+      max-width: 100%;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+    input[type="radio"] {
+      width: auto;
+      margin-right: 8px;
+      margin-bottom: 10px;
+    }
+    .historia {
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+      padding: 15px;
+      margin: 20px 0;
+      white-space: pre-line;
+    }
+    input[type="submit"] {
+      margin-top: 30px;
+      padding: 12px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100%;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      overflow-x: auto;
+      display: block;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      text-align: center;
+      padding: 8px;
+    }
+    @media (max-width: 600px) {
+      table thead { display: none; }
+      table, tbody, tr, td {
+        display: block;
+        width: 100%;
+      }
+      tr { margin-bottom: 15px; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+      td { text-align: left; padding-left: 50%; position: relative; }
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        font-weight: bold;
+      }
+    }
+  </style>
+  <script>
+    let cambioPestana = 0;
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        cambioPestana += 1;
+        document.getElementById("intentos_cambio_pestana").value = cambioPestana;
+        if (!navigator.userAgent.toLowerCase().includes("mobile")) {
+          alert("Por favor, no cambie de pestaña mientras responde la encuesta.");
+        }
+      }
+    });
+
+    const historias = {
+      "activista": "El Congreso de Sinaloa Designó a Jorge Inzunza como presidente de la Comisión Estatal de Derechos Humanos.\n\n[Aquí va la historia completa 1...]",
+      "experto": "El Congreso de Sinaloa Designó a Jorge Inzunza como presidente de la Comisión Estatal de Derechos Humanos.\n\n[Aquí va la historia completa 2...]",
+      "servidor_publico": "El Congreso de Sinaloa Designó a Jorge Inzunza como presidente de la Comisión Estatal de Derechos Humanos.\n\n[Aquí va la historia completa 3...]",
+      "politico_confianza": "El Congreso de Sinaloa Designó a Jorge Inzunza como presidente de la Comisión Estatal de Derechos Humanos.\n\n[Aquí va la historia completa 4...]",
+      "politico_partidista": "El Congreso de Sinaloa Designó a Jorge Inzunza como presidente de la Comisión Estatal de Derechos Humanos.\n\n[Aquí va la historia completa 5...]",
+      "cliente_militante": "El Congreso de Sinaloa Designó a Jorge Inzunza como presidente de la Comisión Estatal de Derechos Humanos.\n\n[Aquí va la historia completa 6...]"
+    };
+    const claves = Object.keys(historias);
+    const seleccion = claves[Math.floor(Math.random() * claves.length)];
+    window.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("historiaTexto").innerText = historias[seleccion];
+      document.getElementById("perfilSeleccionado").value = seleccion;
+    });
+  </script>
+</head>
+<body>
+<!-- Aquí inicia el formulario, lo completarás pegando el bloque que ya tienes -->
+</body>
+</html>
